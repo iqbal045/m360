@@ -88,6 +88,11 @@ export const update = async (req: Request, res: Response) => {
         is_active,
       });
 
+    // update child category status
+    await knex.from('categories').where('parent_id', id).update({
+      is_active: category.is_active,
+    });
+
     if (!category) {
       return error(res, {}, 'Category not found!', 404);
     }
@@ -145,6 +150,11 @@ export const status = async (req: Request, res: Response) => {
       .from('categories')
       .where({ id })
       .first();
+
+    // update child category status
+    await knex.from('categories').where('parent_id', id).update({
+      is_active: category.is_active,
+    });
 
     // If the category is not found, return an error
     if (!category) {
