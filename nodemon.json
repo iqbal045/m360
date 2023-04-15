@@ -1,0 +1,11 @@
+{
+  "watch": [
+      "src",
+      ".env",
+      "package.json",
+      "tsconfig.json",
+      "knexfile.ts",
+      "index.ts"
+    ],
+  "ext": ".js, .jsx, .ts, .tsx, .yaml, json"
+}
